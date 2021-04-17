@@ -79,6 +79,15 @@ const solve = async (arguments) => {
 
   const solveHcaptcha = async () => {
     console.log('hcaptcha')
+    
+    let keyHolder = document.querySelector('[data-sitekey]') ?
+        document.querySelector('[data-sitekey]') :
+        document.querySelector('iframe[src*=sitekey]');
+    
+    if(!keyHolder) {
+      console.log('missing keyHolder.')
+      await delay(2000);
+    }
 
     let sitekey = document.querySelector('[data-sitekey]') ?
       document.querySelector('[data-sitekey]').getAttribute('data-sitekey') :
